@@ -58,19 +58,19 @@ Different images for different models (Don't need to specify model name on the c
 
 Note: You need to mount your current folder (or any folder that your video exist on, to `/root` folder of container)
 
-    docker run -v .:/root eiliya/auto-subtitle
+    docker run -v .:/media eiliya/auto-subtitle
 
 Sample of full docker run command with additional commands:
 
-    docker run -v .:/root eiliya/auto-subtitle --srt_only true --task translate video.mp4 
+    docker run -v .:/media eiliya/auto-subtitle --srt_only true --task translate video.mp4 
     
 Or
 
-    docker run -v /path/to:/root eiliya/auto-subtitle --srt_only true --task translate video.mp4 
+    docker run -v /path/to:/media eiliya/auto-subtitle --srt_only true --task translate video.mp4 
 
 Or
 
-    docker run -v /path/to:/root eiliya/auto-subtitle video.mp4 --srt_only true --task translate 
+    docker run -v /path/to:/media eiliya/auto-subtitle video.mp4 --srt_only true --task translate 
 
 As you can see, you still can pass `auto_subtitle` commands by docker 
 
