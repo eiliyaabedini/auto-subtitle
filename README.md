@@ -35,9 +35,44 @@ Adding `--task translate` will translate the subtitles into English:
 
     auto_subtitle /path/to/video.mp4 --task translate
 
+Just SRT file:
+
+    auto_subtitle /path/to/video.mp4 --srt_only true
+    
 Run the following to view all available options:
 
     auto_subtitle --help
+    
+## Docker
+You can use docker to make subtitle
+Docker image:
+
+    eiliya/auto-subtitle
+
+Different images for different models (Don't need to specify model name on the command anymore):
+
+    - Tiny: eiliya/auto-subtitle:tiny
+    - Small: eiliya/auto-subtitle:small   (Also as latest: eiliya/auto-subtitle)
+    - Medium: eiliya/auto-subtitle:medium
+    - Large: eiliya/auto-subtitle:large
+
+Note: You need to mount your current folder (or any folder that your video exist on, to `/root` folder of container)
+
+    docker run -v .:/root eiliya/auto-subtitle
+
+Sample of full docker run command with additional commands:
+
+    docker run -v .:/root eiliya/auto-subtitle --srt_only true --task translate video.mp4 
+    
+Or
+
+    docker run -v /path/to:/root eiliya/auto-subtitle --srt_only true --task translate video.mp4 
+
+Or
+
+    docker run -v /path/to:/root eiliya/auto-subtitle video.mp4 --srt_only true --task translate 
+
+As you can see, you still can pass `auto_subtitle` commands by docker 
 
 ## License
 
