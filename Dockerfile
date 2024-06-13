@@ -2,8 +2,8 @@ FROM ivanlee/ffmpeg-python
 
 RUN pip install git+https://github.com/m1guelpf/auto-subtitle.git
 
-RUN auto_subtitle video.mp4 --model small || true
+WORKDIR /media
 
-WORKDIR /root
+COPY /models/small.pt /root/.cache/whisper/small.pt
 
 ENTRYPOINT  ["auto_subtitle","--model","small"]
